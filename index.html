@@ -5,14 +5,114 @@
 		<meta charset="UTF-8">
 
 		<style>
-			
+
 		</style>
 	</head>
 
 	<body>
+
+		<script>
+
+			function computerPlay() {
+				let computerCalls = ['rock', 'paper', 'scissors'];
+				return computerCalls[Math.floor(Math.random()*computerCalls.length)]
+			}
+
+			function playRound (playerSelection, computerSelection) {
+				if (playerSelection === 'rock') {
+
+					switch (computerSelection) {
+						case 'rock':
+							return alert(`Draw! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`);
+							break;
+						case 'paper':
+							computerScore++;
+							return  alert(`Computer won! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						case 'scissors':
+							playerScore++;
+							return alert(`You win! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						}
+					} else if (playerSelection === 'paper') {
+
+						switch (computerSelection) {
+							case ('rock'):
+							playerScore++;
+							return alert(`You win! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						case ('paper'):
+							return alert(`Draw! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`);
+							break;
+						case('scissors'):
+							computerScore++;
+							return  alert(`Computer won! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						}
+					} else {
+						switch (computerSelection) {
+							case ('rock'):
+							computerScore++;
+							return  alert(`Computer won! Current score is:
+								COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						case ('paper'):
+							playerScore++;
+							return alert(`You win! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`)
+							break;
+						case('scissors'):
+							return alert(`Draw! Current score is:
+							COMPUTER ${computerScore} PLAYER ${playerScore}`);
+							break;
+					}
+				}
+			}
+
+				let playerScore = 0;
+				let computerScore = 0;
+
+			function game() {
+
+				for (let i = 0; i < 5; i++) {
+					let playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
+
+					//playRound(playerSelection, computerPlay());
+
+					switch (playerSelection) {
+						case 'rock':
+						case 'scissors':
+						case 'paper':
+							playRound(playerSelection, computerPlay());
+						break;
+
+						default:
+						alert('Check your spelling');
+					}
+				}
+
+				if (playerScore > computerScore) {
+					return alert(`You have won! Your score is ${playerScore}. Computer score is ${computerScore}.`)
+				} else if (playerScore < computerScore) {
+					return alert(`You have lost! Your score is ${playerScore}. Computer score is ${computerScore}.`)
+				} else {
+					return alert(`Draw! Your score is ${playerScore}. Computer score is ${computerScore}.`)
+				}
+			}
+
+			game();
+
+		</script>
+
+
 	</body>
 
-	<script>
-	</script>
+
 
 </html>
